@@ -12,9 +12,8 @@ const compat = new FlatCompat({
 const eslintConfig = [
   ...compat.extends("next/core-web-vitals", "next/typescript"),
   {
-    ignorePatterns: [
-        'tailwind.config.ts'
-    ]
+    files: ['**/*.{js,jsx,ts,tsx}'],
+    ignores: ['tailwind.config.ts'],
   }
 ];
 

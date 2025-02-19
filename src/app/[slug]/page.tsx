@@ -4,12 +4,14 @@ import fs from "fs";
 import {components} from "@/components/MDXComponents";
 import rehypePrettyCode from "rehype-pretty-code";
 
+export const dynamicParams = false;
+
 export function generateStaticParams() {
     return [{slug: 'test-1'}]
 }
 
-export default async function Page({params}: { params: { slug: string } }) {
-    const { slug } = params;
+export default async function Page({params}: { params: Promise<{ slug: string }> }) {
+    const {slug} = await params;
     const filePath = path.join(process.cwd(), 'content', `${slug}.mdx`);
     const fileContent = fs.readFileSync(filePath, 'utf8');
 
@@ -28,5 +30,3 @@ export default async function Page({params}: { params: { slug: string } }) {
         </article>
     );
 }
-
-export const dynamicParams = false;
