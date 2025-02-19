@@ -9,7 +9,7 @@ export function generateStaticParams() {
 }
 
 export default async function Page({params}: { params: { slug: string } }) {
-    const { slug } = await params;
+    const { slug } = params;
     const filePath = path.join(process.cwd(), 'content', `${slug}.mdx`);
     const fileContent = fs.readFileSync(filePath, 'utf8');
 
