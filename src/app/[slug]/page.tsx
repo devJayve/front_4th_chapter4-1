@@ -1,6 +1,7 @@
 import {MDXRemote} from "next-mdx-remote-client/rsc";
 import path from "path";
 import fs from "fs";
+import {components} from "@/components/MDXComponents";
 
 export default async function Page({params}: { params: { slug: string } }) {
     const {slug} = params;
@@ -10,7 +11,7 @@ export default async function Page({params}: { params: { slug: string } }) {
 
     return (
         <article>
-        <MDXRemote source={fileContent}/>
+        <MDXRemote source={fileContent} components={components}/>
     </article>
     );
 }
